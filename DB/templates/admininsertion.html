@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Insert Admins!{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<center><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Isfahan_University_of_Technology_%28seal%29.svg/200px-Isfahan_University_of_Technology_%28seal%29.svg.png"></center>
+<div class="query4">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">{{ user.username }}</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+ 
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+		<Center><h4>Isfahan University of Technology Dorms</h4></center>
+      </form>
+<ul class="nav navbar-nav navbar-left">
+<a href="{% url 'logout' %}">logout</a>
+</ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<center>
+<h2><font color="#DD1E00"><strong>Insert Admins</strong></font></h2>
+<br><br>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+      <div class="sth">
+<button class="btn btn-lg btn-primary btn-block" type="submit">Enter</button>
+</div>
+</form>
+</center>
+</div>
+{% else %}
+<center><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Isfahan_University_of_Technology_%28seal%29.svg/200px-Isfahan_University_of_Technology_%28seal%29.svg.png"></center>
+  <p><strong><center><h2><font color="#DD1E00">You are not logged in</font></h2></center></strong></p>
+  <center><a href="{% url 'login' %}">login</a></center>
+{% endif %}
+{% endblock %}
+
